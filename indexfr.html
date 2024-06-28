@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <limk rel="stylesheet" href="styles.css"></limk>
+</head>
+<style>
+  button{
+    background-color:maroon;
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+    font-size: 500;
+    color: white;
+  }
+</style>
+<body>
+
+  <button  id="custom-launcher" type="button" onclick="toggleMessenger()" >
+  CHAT
+</button>
+
+<!--<button type="button" id="custom-launcher" style="display: none;" onclick="toggleMessenger()">Custom Launcher Button</button>-->
+</body>
+</html>
+
+<script type="text/javascript" charset="utf-8">
+  function toggleMessenger(){
+    Genesys("command", "Messenger.open", {},
+      function(o){},  // if resolved
+      function(o){    // if rejected
+        Genesys("command", "Messenger.close");
+      }
+    );
+  }
+  
+  (function (g, e, n, es, ys) {
+    g['_genesysJs'] = e;
+    g[e] = g[e] || function () {
+      (g[e].q = g[e].q || []).push(arguments)
+    };
+    g[e].t = 1 * new Date();
+    g[e].c = es;
+    ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+  })(window, 'Genesys', 'https://apps.cac1.pure.cloud/genesys-bootstrap/genesys.min.js', {
+    environment: 'prod-cac1',
+    deploymentId: 'cbc3dc86-7ec1-47c3-8dac-616c3341bae3'
+  });
+
+ 
+</script>
